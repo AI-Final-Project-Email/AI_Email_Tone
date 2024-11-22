@@ -1,0 +1,28 @@
+{
+    "manifest_version": 3,
+    "name": "Email Parser",
+    "version": "1.0.0",
+    "description": "A basic example extension with only required keys",
+    "icons": {
+      "32": "icon-32.png",
+      "48": "icon_48.png"
+    },
+
+    "background": {
+        "service_worker": "service-worker.js",
+        "type": "module"
+    },
+
+    "action": {
+        "default_popup": "index.html"
+     },
+
+    "permissions": [
+      "scripting"
+    ],
+
+    "host_permissions": [
+      "https://mail.google.com/*?compose=*",
+      "http://mail.google.com/*?compose=*"
+    ]
+  }
