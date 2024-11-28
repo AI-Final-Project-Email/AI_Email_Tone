@@ -6,71 +6,76 @@ This project provides a comprehensive solution for analyzing email content, dete
 - **Readability Analysis**: Evaluates the clarity and readability of the email.
 - **Sentiment Analysis**: Determines whether the sentiment is positive, negative, or neutral.
 - **Emotion Detection**: Identifies specific emotional states (e.g., joy, anger, sadness).
-- **Summary Generation**: Provides a concise summary of the email content.
 - **Improvement Suggestions**: Offers actionable recommendations for writing better emails.
 
 ## **Prerequisites**
 
 Ensure you have the following installed on your system:
 
-- **Python 3.7+**
+- **Python 3.10+**
 - **pip** (Python package manager)
 
+The attached notebook file should be able to be run in sequence, with the first cell checking that all necessary dependencies are installed but if you should come across a `no module named <package>` error you should be able to add that module to the cell that says `!pip install <packages>` and the notebook should run sequentially. 
+
+There is a GPU option in the fourth part for GPU enabled systems. 
+
 ### **Dependencies**
-Install the required Python libraries using the following command:
+Required Python libraries:
 
 ```bash
-pip install -r requirements.txt
-```
-The `requirements.txt` file should include:
-```
-transformers
-spacy
-language-tool-python
-textstat
-pandas
+ipython
+language_tool_python
 matplotlib
 nltk
-sentence-transformers
+pandas
+spacy
+textstat
+torch
+transformers
 ```
+
 Additionally, download the required NLTK data:
 ```python
 import nltk
 nltk.download('vader_lexicon')
 ```
-For spaCy, ensure the language model is installed:
-```python
-python -m spacy download en_core_web_sm
-```
+
 # Usage
 
 ## **How to Run the Code**
 
 ### Clone this repository:
 ```bash
-git clone https://github.com/your-repo/email-analysis.git
-cd email-analysis
+git clone https://github.com/AI-Final-Project-Email/AI_Email_Tone.git
+cd AI_Email_Tone
 ```
-Run the main script to analyze an email:
-```bash
-python main.py
-```
-- Input your email content when prompted, or modify the email_content variable in main.py to directly process a specific email.
+This notebook is meant to be run through a python notebook enabled IDE such as Jupyter Notebook or Google Colab. 
+
+Once the notebook is opened in one of these IDEs, the user should be able to run it sequentially. 
+
+At this time, the email text must be manually entered. We suggest that you comment out the email being used for example and add your text in cell four, assigned to the variable name email_content. 
+
+Run the main script to analyze an email by either choosing the `Run all` option under `Runtime` at the top of the screen or by pushing the triangle "play" button to the left of each cell. 
+
+- Input your email content in cell four, to modify the email_content variable and directly process a specific email.
 ### Results will include:
 1. Corrected grammar and spelling.
 2. Readability and sentiment analysis.
 3. Emotional tone detection.
 4. Suggestions for improvement.
-5. A rewritten version of the email based on the suggestions.
+5. A rewritten version of the email based on the accepted suggestions.
 ## Key Functions
 - `check_grammar_and_spelling`: Detects and corrects grammar/spelling errors.
+- `analyze_readability`: Analyzes the clarity and readability of the original and corrected email.  
 - `analyze_emotion`: Analyzes the emotional tone of the email.
 - `summarize_and_suggest`: Summarizes the email and provides actionable suggestions for improvement.
 ## Output
 **The program provides**:
 1. **Visualizations**:
-    - Bar charts for readability and emotional tone.
+    - Bar charts for errors, readability, sentiment, and emotional tone.
     - Pie chart for emotion probabilities.
+    - Line graph of corrected errors.
+    - Pandas DataFrames to quantitatively compare original versus corrected data. 
 2. **Textual Results**:
     - Detailed analysis of grammar issues, readability, sentiment, and emotion detection.
     - Suggestions for email improvements.
@@ -80,13 +85,13 @@ python main.py
 ```
 Hi Team,
 
-I hope this email finds you well. I think we need to discuss the delays in our project. You always say the deadlines are manageable, but they never seem to be met.
+I hope this email find you well. I think we need to discuss the delys in our project. You alawys say the deadlines are manageble, but they never seems to be met.
 
-Maybe we could have planned better, but I shouldn’t have to constantly follow up. No offense, but it feels like some of you aren’t taking ownership of your tasks.
+Maybe we could have planned better, but I shouldn’t have to constanly follows up. No offens, but it feels like some of you arn’t taking ownership of yur tasks.
 
-Please review your tasks before tomorrow’s meeting and come prepared with suggestions for improvement.
+Please review your tasks before tomorow’s meeting and come prepars with suggestions for improvement.
 
-Thanks,  
+Thanx,  
 Alex
 ```
 ## Output
@@ -109,8 +114,6 @@ Alex
 ```
 ## Troubleshooting
 1. Model Not Found Error:
-    - Ensure all models (e.g., facebook/bart-large-cnn, roberta-large-mnli) are correctly downloaded.
-2. Dependencies Issue:
-    - Recheck the installed libraries with pip list and match them against requirements.txt.
-3. Performance:
-    - For GPU support, ensure PyTorch is installed with CUDA.
+    - Ensure all models (e.g., facebook/bart-large-cnn, roberta-large-mnli) are correctly downloaded. This can mostly likely be corrected with `!pip install <package>`
+4. Performance:
+    - For GPU support, ensure PyTorch is installed and that GPU support is enabled in your IDE.
