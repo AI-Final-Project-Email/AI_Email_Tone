@@ -1,4 +1,5 @@
 # Email Analysis and Emotion Detection
+Authors: Sharon Colson, Logan Bolton, Tania Flores, Riley Grimaud
 
 This project provides a comprehensive solution for analyzing email content, detecting emotional tone, and generating actionable suggestions for improvement. It includes the following features:
 
